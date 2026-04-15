@@ -22,25 +22,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         <li>Métodos de Passo Simples
                             <ul>
                             <li>
-                                <a href="${pagePath}metodo-euler.html">Método de Euler</a>
+                                <b href="${pagePath}metodo-euler.html">Método de Euler</a>
                                 <ul>
                                 <li><a href="${pagePath}metodo-euler-explicito.html">Método de Euler Explícito</a></li>
-                                <li><a href="${pagePath}metodo-euler-implicito.html" >Método de Euler Implícito</a></li>
+                                <li><b href="${pagePath}metodo-euler-implicito.html" >Método de Euler Implícito</a></li>
                                 </ul>
                             </li>
-                            <li><a href="${pagePath}metodos-taylor.html">Métodos de Taylor</a></li>
+                            <li><b href="${pagePath}metodos-taylor.html">Métodos de Taylor</a></li>
                             <li>
-                                <a href="${pagePath}metodos-runge-kutta.html">Métodos de Runge-Kutta</a>
+                                <b href="${pagePath}metodos-runge-kutta.html">Métodos de Runge-Kutta</a>
                                 <ul>
 <!--
-                                <li><a href="${pagePath}metodo-rk2.html">RK Segunda Ordem</a></li>
-                                <li><a href="${pagePath}metodo-rk3.html">RK Terceira Ordem</a></li>
+                                <li><b href="${pagePath}metodo-rk2.html">RK Segunda Ordem</a></li>
+                                <li><b href="${pagePath}metodo-rk3.html">RK Terceira Ordem</a></li>
 -->
                                 <li><a href="${pagePath}metodo-rk4.html">RK Quarta Ordem</a></li>
                                 </ul>
                             </li>
 
-                            <li><a href="${pagePath}metodos-preditor-corretor.html">Métodos Preditor-Corretor</a></li>
+                            <li><b href="${pagePath}metodos-preditor-corretor.html">Métodos Preditor-Corretor</a></li>
 
                                 <li>1º Aplicação Prática - Pêndulo
                                     <ul>
