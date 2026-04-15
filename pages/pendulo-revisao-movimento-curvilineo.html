@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/styles.js"></script>  <!-- CARREGA ESTILOS PADRÃO -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <!-- MATHJAX PARA LATEX -->
+</head>
+<body>
+    <script src="../js/header.js"></script>  <!-- CARREGA HEADER -->
+    <script src="../js/sidebar.js"></script>  <!-- CARREGA SIDEBAR -->
+    <script src="../js/media-controller.js"></script>  <!-- COMPORTAMENTO DA SIDEBAR -->
+    <script src="../js/footer.js"></script>  <!-- INSERE FOOTER -->
+    <main class="layout">
+        <section class="content">
+
+<div class="rev-ribbon">EM REVISÃO</div>
+
+<!-- INÍCIO DO CONTEÚDO -->
+
+<h2>Revisão: Movimento Circular com Aceleração Tangencial Constante</h2>
+
+<!-- <p>
+Imagine uma partícula submetida a uma força resultante de módulo constante,
+cuja direção varia continuamente de modo a permanecer sempre tangente a uma
+circunferência imaginária. Adotando o centro dessa circunferência como a origem
+\((0,0)\) de um sistema de coordenadas cartesianas, essa força não altera a
+distância da partícula em relação ao centro, mas modifica sua velocidade ao
+longo da trajetória.
+</p>
+
+<p>
+Como consequência, a partícula descreve um movimento circular em torno da origem,
+mantendo constante o raio da trajetória. Em termos cartesianos, isso significa
+que sua posição \((x, y)\) satisfaz uma relação do tipo \(x^2 + y^2 = R^2\),
+evidenciando que ela permanece sempre sobre a circunferência.
+</p>
+
+<p>
+Por outro lado, embora a distância ao centro não varie, a posição angular da
+partícula evolui no tempo. De fato, o ângulo \(\theta\), que descreve a posição
+da partícula em relação a um eixo de referência, cresce de forma não uniforme:
+sua taxa de variação aumenta ao longo do tempo. Isso caracteriza um movimento
+circular acelerado, no qual há uma aceleração angular associada à força tangencial
+aplicada.
+</p>
+
+<p>
+Para facilitar a compreensão dessa situação, é útil visualizar o comportamento
+da partícula ao longo do tempo. A figura a seguir ilustra a trajetória circular
+descrita, bem como a direção da força resultante, que permanece sempre tangente à
+circunferência, e o ângulo \(\theta\), que varia aceleradamente à medida que a
+partícula se movimenta.
+</p> -->
+
+<p>
+Imagine uma partícula submetida a uma força resultante de módulo constante, cuja direção varia continuamente de modo a permanecer sempre tangente a uma circunferência imaginária. Tomando o centro dessa circunferência como a origem \((0,0)\) de um sistema de coordenadas cartesianas, essa força não altera a distância da partícula ao centro, mas modifica sua velocidade ao longo da trajetória.
+</p>
+
+<p>
+Como consequência, a partícula descreve um movimento circular em torno da origem, mantendo constante o raio da trajetória. Em termos cartesianos, isso significa que sua posição \((x, y)\) satisfaz a relação \(x^2 + y^2 = R^2\), ou seja, ela permanece sempre sobre a circunferência de raio \(R\).
+</p>
+
+<p>
+Embora a distância ao centro permaneça constante, a posição angular da partícula varia ao longo do tempo. O ângulo \(\theta\), que indica sua posição em relação a um eixo de referência, não cresce de forma uniforme: sua taxa de variação aumenta com o tempo.
+</p>
+
+<p>
+Esse comportamento caracteriza um movimento circular acelerado, no qual existe uma aceleração angular associada à força tangencial aplicada à partícula.
+</p>
+
+<p>
+Para compreender melhor essa dinâmica, é útil visualizar a evolução do movimento. A figura a seguir ilustra a trajetória circular, a direção da força resultante (sempre tangente à circunferência) e o ângulo \(\theta\), que cresce de forma acelerada ao longo do tempo.
+</p>
+
+
+<img src="../assets/images/mov-circ-ac.png" alt="movimento circular acelerado sob força tangencial constante">
+
+<p>
+No applet a seguir, é possível visualizar a variação do ângulo \(\theta\) ao longo do tempo. Observe como o <b>comprimento do arco</b> (que representa a distância percorrida sobre a circunferência) aumenta de forma acelerada à medida que o movimento evolui.
+</p>
+
+<div class="geogebra-background">
+    <div style="max-width: 700px; aspect-ratio: 958 / 708;">
+        <iframe
+            scrolling="no"
+            allowfullscreen
+            title="Movimento Circular Acelerado"
+            src="https://www.geogebra.org/material/iframe/id/u9zzdkrd/width/958/height/708/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/true/sdz/false/ctl/false">
+        </iframe>
+    </div>
+</div>
+
+<p>
+Podemos imaginar “desenrolar” esse arco e representá-lo como um segmento de reta. Nesse caso, o problema se torna análogo ao de um movimento retilíneo acelerado com aceleração constante. No entanto, como o movimento real é circular, é mais adequado descrever a distância percorrida \(C\) (destacado em azul) em função do ângulo \(\theta\) (em radianos) e do raio \(R\).
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[ C = R \cdot \theta \]
+</div>
+</div>
+
+<p>
+A variação do comprimento do arco ao longo do tempo está associada à velocidade tangencial da partícula. Por sua vez, a taxa de variação dessa velocidade define a aceleração tangencial:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[ a_{tan} = \frac{dv}{dt} = R \cdot \frac{d^2 \theta}{dt^2} \]
+</div>
+</div>
+
+
+<p>
+De acordo com a segunda lei de Newton, a aceleração tangencial é proporcional à força resultante aplicada na direção tangente à trajetória e inversamente proporcional à massa da partícula. Assim, temos:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[ F_{tan} = m \cdot a_{tan} = m \cdot R \cdot \frac{d^2 \theta}{dt^2} \]
+</div>
+</div>
+
+<p>
+<strong>Observação:</strong> se estivermos tratando de um corpo rígido em rotação, em vez de considerar apenas a massa, é necessário utilizar o momento de inércia em relação ao eixo de rotação, o que leva a uma formulação mais geral da dinâmica rotacional, mas que está fora do escopo desta análise.
+</p>
+
+        </section>
+    </main>
+</body>
+</html>

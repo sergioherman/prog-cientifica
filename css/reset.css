@@ -1,0 +1,73 @@
+/* ===== RESET BASE ===== */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove margens padrão e reseta fonte */
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd, p, ol, ul, li {
+    margin: 0;
+    font-weight: 400;
+    padding: 0;
+}
+
+/* Remove padding padrão */
+ul, ol {
+    padding: 0;
+    list-style: none;
+}
+
+/* Altura base */
+html, body {
+    height: 100%;
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Tipografia base */
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* Imagens responsivas */
+img, picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Form elements herdam fonte */
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* Remove estilo de botão */
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Links sem estilo padrão */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Tabelas */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Evita overflow */
+body {
+    overflow-x: hidden;
+}

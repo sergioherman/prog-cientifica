@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/styles.js"></script>  <!-- CARREGA ESTILOS PADRÃO -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <!-- MATHJAX PARA LATEX -->
+</head>
+<body>
+    <script src="../js/header.js"></script>  <!-- CARREGA HEADER -->
+    <script src="../js/sidebar.js"></script>  <!-- CARREGA SIDEBAR -->
+    <script src="../js/media-controller.js"></script>  <!-- COMPORTAMENTO DA SIDEBAR -->
+    <script src="../js/footer.js"></script>  <!-- INSERE FOOTER -->
+    <main class="layout">
+        <section class="content">
+
+<div class="dev-ribbon">EM DESENVOLVIMENTO</div>
+
+<!-- INÍCIO DO CONTEÚDO -->
+<h2>Métodos de Euler</h2>
+<p>Os métodos de Euler são técnicas numéricas utilizadas para resolver problemas de valor inicial (PVI) de equações diferenciais ordinárias onde a inclinação da curva em um determinado ponto é usada como estimativa do comportamento da função na vizinhança deste ponto. Existem dois métodos de Euler: o método de Euler explícito e o método de Euler implícito.</p>
+<p>É recomendável que antes de prosseguir, você acesse as páginas dedicadas a cada um:</p>
+<ul>
+    <li><a href="metodo-euler-explicito.html">Método de Euler Explícito</a></li>
+    <li><a href="metodo-euler-implicito.html">Método de Euler Implícito</a></li>
+</ul>
+<h4>Comparação entre os Métodos</h4>
+<p>
+    O applet abaixo faz a comparação entre esses métodos para os PVIs exemplificados nas páginas dedicadas. Ele permite visualizar as diferenças na aproximação das soluções, especialmente em casos de equações diferenciais rígidas, onde o método de Euler explícito pode apresentar instabilidades, enquanto o método de Euler implícito tende a ser mais estável. 
+</p>
+
+<div class="dev-field">
+    APPLET EM CONSTRUÇÃO
+</div>
+
+<h4>Euler para EDOs de Ordem Superior</h4>
+<p>
+É possível estender os métodos de Euler para resolver equações diferenciais ordinárias (EDOs) de ordem superior, transformando-as em sistemas de EDOs de primeira ordem. Por exemplo, uma EDO de segunda ordem pode ser reescrita como um sistema de duas EDOs de primeira ordem, permitindo a aplicação dos métodos de Euler para obter soluções aproximadas. Essa abordagem é útil para resolver uma ampla variedade de problemas em física, engenharia e outras áreas onde as EDOs de ordem superior são comuns.
+</p>
+<p>
+Um exemplo clássico de aplicação dos métodos de Euler para EDOs de ordem superior é o <a href="pendulo-euler.html">problema do pêndulo</a> onde a equação diferencial de segunda ordem que descreve o movimento do pêndulo pode ser reescrita como um sistema de duas EDOs de primeira ordem, permitindo a utilização dos métodos de Euler para simular o comportamento do pêndulo ao longo do tempo.
+</p>
+
+        </section>
+    </main>
+</body>
+</html>
+

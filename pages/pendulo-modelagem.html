@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/styles.js"></script>  <!-- CARREGA ESTILOS PADRÃO -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <!-- MATHJAX PARA LATEX -->
+</head>
+<body>
+    <script src="../js/header.js"></script>  <!-- CARREGA HEADER -->
+    <script src="../js/sidebar.js"></script>  <!-- CARREGA SIDEBAR -->
+    <script src="../js/media-controller.js"></script>  <!-- COMPORTAMENTO DA SIDEBAR -->
+    <script src="../js/footer.js"></script>  <!-- INSERE FOOTER -->
+    <main class="layout">
+        <section class="content">
+
+<div class="rev-ribbon">EM REVISÃO</div>
+
+<!-- INÍCIO DO CONTEÚDO -->
+
+<h2>Modelagem: Movimento Circular com Aceleração Tangencial Variável</h2>
+
+<p>
+O movimento de um pêndulo simples é um exemplo clássico de movimento circular com aceleração tangencial variável. O objetivo desta modelagem é determinar a equação diferencial que descreve a evolução temporal do ângulo \(\theta\).
+Para isso, analisamos as forças que atuam sobre o sistema e como cada uma contribui para o seu movimento.
+</p>
+
+<p>
+O applet a seguir apresenta o diagrama de forças atuantes no pêndulo, destacando a força peso \(F_{grav}\) e a tensão \(F_{tensão}\) na corda. O ângulo \(\theta\) representa o deslocamento angular em relação à posição de equilíbrio.
+</p>
+
+<div class="geogebra-background">
+    <div style="max-width: 700px; aspect-ratio: 920 / 565;">
+        <iframe
+            scrolling="no"
+            allowfullscreen
+            title="Modelagem Pêndulo"
+            src="https://www.geogebra.org/material/iframe/id/y3hb2kph/width/920/height/565/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/true/sdz/false/ctl/false"
+        ></iframe>
+    </div>
+</div>
+
+
+<p class="note">
+<strong>Observação (direção radial):</strong> a tensão na corda atua ao longo da direção radial, sempre apontando para o centro da trajetória. Juntamente com a componente radial do peso, ela é responsável pela aceleração centrípeta, que mantém constante a distância entre a massa e o centro. Portanto, a resultante das forças nessa direção não é nula, mas corresponde à força centrípeta do movimento.
+Essa aceleração radial altera apenas a direção da velocidade, sem modificar seu módulo. Assim, a variação do módulo da velocidade (aceleração tangencial) é causada exclusivamente pela componente do peso que atua na direção tangencial à trajetória.
+</p>
+
+<p>
+Aplicando a Segunda Lei de Newton na direção tangencial, obtemos:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[m \cdot a_{tan} = - F_{grav} \cdot \text{sen}(\theta) \]
+</div>
+</div>
+
+<p>
+O sinal negativo surge da escolha de \(\theta\) como variável de deslocamento angular. A componente tangencial do peso atua sempre no sentido de reduzir o ângulo \(\theta\), isto é, em direção à posição de equilíbrio. Dessa forma, essa força se opõe ao deslocamento angular, caracterizando um movimento de retorno.
+</p>
+
+<p>
+A <a href="revisao-movimento-curvilineo.html">revisão de movimento curvilíneo</a> explica por que a aceleração tangencial pode ser escrita como \(a_{tan} = R \cdot \frac{d^2\theta}{dt^2}\). Substituindo essa expressão na equação anterior, obtemos:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[m \cdot R \cdot \frac{d^2\theta}{dt^2} = - m \cdot g \cdot \text{sen}(\theta) \]
+</div>
+</div>
+
+<p>
+Dividindo ambos os lados por \(m\) e \(R\), chegamos à equação diferencial que descreve o movimento do pêndulo:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[\frac{d^2\theta}{dt^2} = - \frac{g}{R} \cdot \text{sen}(\theta)\]
+</div>
+</div>
+
+<p>
+Essa equação governa a evolução temporal do ângulo \(\theta\). A partir dela, é possível determinar a posição do pêndulo em qualquer instante do tempo.
+</p>
+
+        </section>
+    </main>
+</body>
+</html>
