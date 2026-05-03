@@ -6,26 +6,31 @@ on:
       - main
       - dev
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Baixar código
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Preparar arquivos
         run: |
-          mkdir public
+          mkdir -p public
 
           if [ "${GITHUB_REF##*/}" = "main" ]; then
-            cp -r ./* public/
+            rsync -av --exclude='.git' --exclude='.github' ./ public/
           else
             mkdir -p public/dev
-            cp -r ./* public/dev/
+            rsync -av --exclude='.git' --exclude='.github' ./ public/dev/
           fi
 
-      - name: Publicar no GitHub Pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
