@@ -1,3 +1,5 @@
+// ADD SIDEBAR DINÂMICA
+
 document.addEventListener('DOMContentLoaded', function() {
     // Detecta se está em um subdirectório
     const isInSubdir = window.location.pathname.includes('/pages/');
@@ -10,67 +12,81 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Sumário</h3>
                 <nav>
                     <ol>
+                    <li><a href="${pagePath}../index.html">Início<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
 
                     <li>Pré-Requisitos
                         <ul>
-                        <li><a href="${pagePath}series-taylor.html">Séries de Taylor</a></li>
+                        <li><a href="${pagePath}series-taylor.html">Séries de Taylor<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
                         </ul>
                     </li>
 
-                    <li>EDO: Problemas de Valor Inicial
+                    <li>
+                        
+                        <a href="${pagePath}pvi-metodos-numericos.html">PVI: Métodos Numéricos<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a>
                         <ul>
-                        <li>Métodos de Passo Simples
+                        <li>
+                            <a href="${pagePath}metodo-passo-simples.html">Métodos de Passo Simples<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
                             <ul>
                             <li>
-                                <b href="${pagePath}metodo-euler.html">Método de Euler</a>
+                                <a href="${pagePath}metodo-euler.html">Método de Euler<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
                                 <ul>
-                                <li><a href="${pagePath}metodo-euler-explicito.html">Método de Euler Explícito</a></li>
-                                <li><b href="${pagePath}metodo-euler-implicito.html" >Método de Euler Implícito</a></li>
+                                <li><a href="${pagePath}metodo-euler-explicito.html">Método de Euler Explícito<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
+                                <li>
+                                    <a href="${pagePath}metodo-euler-implicito.html" >Método de Euler Implícito<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+                                    <ul>
+                                        <li><a href="${pagePath}euler-implicito-analitico.html">Solução Analítica (caso linear)<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+                                        <li><a href="${pagePath}euler-implicito-iterativo.html">Métodos Iterativos<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+                                    </ul>
+                                <li><a href="${pagePath}preditor-corretor-euler.html">Preditor-Corretor com Euler<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
+                                </li>
                                 </ul>
                             </li>
-                            <li><b href="${pagePath}metodos-taylor.html">Métodos de Taylor</a></li>
+                            <li><a href="${pagePath}metodos-taylor.html">Métodos de Taylor<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
                             <li>
-                                <b href="${pagePath}metodos-runge-kutta.html">Métodos de Runge-Kutta</a>
+                                <a href="${pagePath}metodos-runge-kutta.html">Métodos de Runge-Kutta<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
                                 <ul>
+                                <li><a href="${pagePath}metodo-rk2-ex.html">RK Segunda Ordem Explícito<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
 <!--
-                                <li><b href="${pagePath}metodo-rk2.html">RK Segunda Ordem</a></li>
-                                <li><b href="${pagePath}metodo-rk3.html">RK Terceira Ordem</a></li>
--->
-                                <li><a href="${pagePath}metodo-rk4.html">RK Quarta Ordem</a></li>
+                                <li><a href="${pagePath}metodo-rk3.html">RK Terceira Ordem<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+-->                                
+                                <li><a href="${pagePath}metodo-rk4-ex.html">RK Quarta Ordem Explícito<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
                                 </ul>
                             </li>
-
-                            <li><b href="${pagePath}metodos-preditor-corretor.html">Métodos Preditor-Corretor</a></li>
 
                                 <li>1º Aplicação Prática - Pêndulo
                                     <ul>
-                                    <li><a href="${pagePath}pendulo-revisao-movimento-curvilineo.html">Movimento Curvilíneo</a></li>
-                                    <li><a href="${pagePath}pendulo-modelagem.html">Modelagem do Pêndulo</a></li>
-                                    <li><a href="${pagePath}pendulo-euler.html">Pêndulo com Método de Euler</a></li>
+                                    <li><a href="${pagePath}pendulo-revisao-movimento-curvilineo.html">Movimento Curvilíneo<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
+                                    <li><a href="${pagePath}pendulo-modelagem.html">Modelagem do Pêndulo<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
+                                    <li><a href="${pagePath}pendulo-euler.html">Pêndulo com Método de Euler<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
                                     </ul>
                                 </li>
 
                             </ul>
                         </li>
-<!--
+
                         <li>Métodos de Passo Múltiplo
                             <ul>
                             <li>Métodos Explícitos
                                 <ul>
-                                <li>Adams-Bashforth</li>
+                                <li><a href="${pagePath}adams-bashforth.html">Adams-Bashforth<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+<!--
                                 <li>Nyström</li>
+-->
                                 </ul>
                             </li>
                             <li>Métodos Implícitos
                                 <ul>
-                                <li>Adams-Moulton</li>
+                                <li><a href="${pagePath}adams-moulton.html">Adams-Moulton<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+<!--
                                 <li>Milne-Simpson</li>
                                 <li>BDF (Backward Differentiation Formula)</li>
+-->
                                 </ul>
                             </li>
+                            <li><a href="${pagePath}preditor-corretor-adams-bashforth-moulton.html">Preditor-Corretor com Adams-Bashforth e Adams-Moulton<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
                             </ul>
                         </li>
--->
+
 
 <!--
                         <li>Sistemas de Equações Diferenciais Ordinárias</li>
@@ -133,6 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// MENU HAMBURGUER E SIDEBAR FIXA
+
 const hamburgerHTML = `
     <button class="hamburger-btn">☰</button>
 `;
@@ -181,3 +199,33 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('resize', updateSidebarPosition);
     }
 });
+
+
+// ATIVA PÁGINA ATUAL NA SIDEBAR
+function highlightActiveLink() {
+  const links = document.querySelectorAll('.sidebar a');
+
+  if (links.length === 0) {
+    setTimeout(highlightActiveLink, 100); // tenta de novo
+    return;
+  }
+
+  const currentPage = window.location.pathname.split("/").pop();
+
+  links.forEach(link => {
+    const linkPage = link.href.split("/").pop();
+
+    if (linkPage === currentPage) {
+        link.parentElement.classList.add("parent-active");
+
+        const li = link.parentElement;
+
+        const hr = document.createElement("hr");
+        hr.classList.add("sidebar-underline");
+
+        li.insertBefore(hr, link.nextSibling);
+    }
+  });
+}
+
+highlightActiveLink();

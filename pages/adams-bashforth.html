@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/styles.js"></script>  <!-- CARREGA ESTILOS PADRÃO -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <!-- MATHJAX PARA LATEX -->
+</head>
+<body>
+    <script src="../js/header.js"></script>  <!-- CARREGA HEADER -->
+    <script src="../js/sidebar.js"></script>  <!-- CARREGA SIDEBAR -->
+    <script src="../js/media-controller.js"></script>  <!-- COMPORTAMENTO DA SIDEBAR -->
+    <script src="../js/footer.js"></script>  <!-- INSERE FOOTER -->
+    <main class="layout">
+        <section class="content">
+
+<div class="dev-ribbon">EM DESENVOLVIMENTO</div>
+<!-- <div class="rev-ribbon">EM REVISÃO</div> -->
+
+<!-- INÍCIO DO CONTEÚDO -->
+
+<h2>Método de Adams-Bashforth</h2>
+
+<p>
+O método de Adams-Bashforth é uma técnica numérica para resolução de Problemas de Valor Inicial (PVIs) baseada na aproximação da integral da derivada da solução.
+Em vez de reconstruir diretamente a função \( y(x) \), o método utiliza informações da sua derivada em pontos anteriores para estimar sua evolução.
+</p>
+
+<p>
+A ideia central é transformar o problema diferencial em um problema de integração numérica.
+</p>
+
+
+
+
+<h3>Ideia geométrica do método</h3>
+
+<p>
+A evolução da solução de um PVI pode ser interpretada como a acumulação da sua taxa de variação ao longo do tempo, isto é, da sua derivada.
+</p>
+
+<p>
+Pelo Teorema Fundamental do Cálculo, a variação da solução em um intervalo pode ser escrita como:
+</p>
+
+<div class="math-container">
+\[
+y(x_{n+1}) = y(x_n) + \int_{x_n}^{x_{n+1}} f(x,y)\,dx
+\]
+</div>
+
+<p>
+Como a função \( f(x,y) = y'(x) \) não é conhecida continuamente, utiliza-se um conjunto de valores obtidos em pontos discretos da solução para aproximá-la.
+</p>
+
+<p>
+Esses valores são interpolados por um polinômio, que representa uma aproximação do comportamento local da derivada no intervalo.
+</p>
+
+<p>
+A integral desse polinômio fornece uma estimativa da variação da solução, interpretada geometricamente como a área sob a curva aproximada de \( y'(x) \).
+</p>
+
+<div class="math-container">
+\[
+y(x_{n+1}) \space \approx \space y(x_n) + \int_{x_n}^{x_{n+1}} P(x)\,dx
+\]
+</div>
+
+<p>
+onde \(P(x)\) representa o polinômio interpolador construído a partir de valores de \(y' = f(x,y)\).
+</p>
+
+
+<p>
+O applet a seguir ilustra esse processo de forma geométrica.
+</p>
+
+
+<div class="geogebra-background">
+    <div style="max-width: 550px; aspect-ratio: 753 / 800;">
+<iframe
+    scrolling="no"
+    title="Intro Addams Bashforth"
+    src="https://www.geogebra.org/material/iframe/id/xpbrxkzm/width/753/height/800/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/false/ctl/false"
+    >
+</iframe>
+    </div>
+</div>
+
+
+<h3>Interpretação do método de Adams-Bashforth</h3>
+
+<p>
+No método de Adams-Bashforth, essa ideia é aplicada de forma iterativa para avançar a solução em múltiplos passos.
+</p>
+
+<p>
+Em cada etapa, utiliza-se um conjunto de valores da derivada obtidos em passos anteriores para construir uma interpolação polinomial.
+</p>
+
+<p>
+A integral desse polinômio fornece uma aproximação da variação da solução, permitindo calcular novos valores de \( y(x) \).
+</p>
+
+<p>
+Esse processo caracteriza um <strong>método de passo múltiplo</strong>, pois depende de informações de mais de um ponto anterior da solução.
+</p>
+
+<p>
+O applet a seguir mostra o método completo em funcionamento, incluindo a construção da interpolação com três pontos e a atualização sucessiva da solução.
+</p>
+
+<div class="geogebra-background">
+    <div style="max-width: 700px; aspect-ratio: 1000 / 670;">
+        <iframe
+            scrolling="no"
+            title="Addams-Bashforth"
+            src="https://www.geogebra.org/material/iframe/id/batfrqxk/width/1000/height/670/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/false/ctl/false"
+            >
+        </iframe>
+    </div>
+</div>
+
+
+
+<h3>Ordem e família de métodos</h3>
+
+<p>
+Os métodos de Adams-Bashforth formam uma família de métodos de passo múltiplo que diferem pela quantidade de pontos utilizados na interpolação da derivada.
+</p>
+
+<p>
+O número de pontos define o grau do polinômio interpolador e, consequentemente, a ordem de precisão do método.
+</p>
+
+<p>
+Em geral, um método que utiliza \(k\) pontos possui erro global da ordem de \( \mathcal{O}(h^k) \).
+</p>
+
+<p>
+Assim, aumentar o número de pontos melhora a precisão, mas também aumenta o custo computacional e a complexidade do método.
+</p>
+
+
+
+<h3>Interpolação da solução vs. interpolação da derivada</h3>
+
+<p>
+Em métodos numéricos para PVIs, existem duas abordagens conceitualmente distintas: interpolar a solução \( y(x) \) ou interpolar sua derivada \( y'(x) \).
+</p>
+
+<h4>Interpolação da solução</h4>
+
+<p>
+Consiste em reconstruir diretamente a função solução a partir de pontos aproximados \( (x_n, y_n) \).
+Embora intuitiva, essa abordagem propaga erros acumulados ao longo dos passos, tornando a reconstrução menos confiável.
+</p>
+
+<h4>Interpolação da derivada</h4>
+
+<p>
+Em vez disso, métodos como Adams-Bashforth utilizam valores de \( f(x,y) = y'(x) \) para reconstruir o comportamento da variação da solução.
+A partir dessa aproximação, calcula-se a integral que determina a evolução da solução.
+</p>
+
+<p>
+Essa abordagem é mais robusta por utilizar diretamente a estrutura da equação diferencial, em vez de depender apenas de valores aproximados da solução.
+</p>
+
+
+
+
+<hr>
+
+
+
+
+<p class="note">NA PRÁTICA USA-SE UMA FÓRMULA MUITO MAIS SIMPLES QUE ESSE MONTE DE PASSO. COLOCAR A FÓRMULA NO APPLET PARA OBTER O MESMO RESULTADO.</p>
+
+
+<h2>Ordem do método e número de pontos</h2>
+
+<p>
+Os métodos de Adams-Bashforth pertencem a uma família de métodos de passo múltiplo, cuja característica principal é o uso de diferentes quantidades de pontos anteriores na construção da interpolação da derivada.
+</p>
+
+<p>
+Quanto maior o número de pontos utilizados, maior é o grau do polinômio interpolador e, consequentemente, maior a ordem de precisão do método.
+</p>
+
+<p>
+De forma geral, um método de Adams-Bashforth que utiliza \(k\) pontos possui ordem de erro global aproximadamente igual a \( \mathcal{O}(h^k) \).
+</p>
+
+<p>
+Isso significa que a escolha do número de pontos não afeta apenas o custo computacional, mas também diretamente a precisão da solução numérica.
+</p>
+
+
+
+<h2>Interpolação da solução vs. interpolação da derivada</h2>
+
+<p>
+Ao construir métodos numéricos para resolver Problemas de Valor Inicial (PVIs), surgem duas ideias conceitualmente próximas, mas fundamentalmente diferentes: interpolar a solução \( y(x) \) ou interpolar sua derivada \( y'(x) \).
+</p>
+
+<h3>Interpolação da solução \(y(x)\)</h3>
+
+<p>
+Uma abordagem direta seria tentar reconstruir a própria solução a partir de pontos aproximados \( (x_n, y_n) \). Nesse caso, constrói-se uma função interpoladora que passa pelos valores já calculados da solução.
+</p>
+
+<p>
+Embora essa ideia seja intuitiva, ela apresenta uma limitação importante: os pontos \( y_n \) não são valores exatos da solução, mas sim aproximações obtidas numericamente. Assim, ao interpolá-los, estamos reconstruindo uma função que já carrega erros acumulados do processo numérico.
+</p>
+
+<p>
+Como consequência, à medida que os passos avançam e nos afastamos da condição inicial \( (x_0, y_0) \), esses erros tendem a se propagar, tornando a interpolação da solução cada vez menos confiável.
+</p>
+
+<h3>Interpolação da derivada \(y'(x)\)</h3>
+
+<p>
+Uma alternativa mais eficiente, utilizada em métodos como Adams-Bashforth e Runge-Kutta, é interpolar a derivada da função, isto é, \( y'(x) = f(x,y) \).
+</p>
+
+<p>
+Nesse caso, em vez de tentar reconstruir diretamente a solução, o método utiliza valores de \( f(x_n, y_n) \) em diferentes pontos já calculados para aproximar o comportamento da derivada ao longo do intervalo.
+</p>
+
+<div class="math-container">
+\[
+y(x_{n+1}) = y(x_n) + \int_{x_n}^{x_{n+1}} f(x,y)\,dx
+\]
+</div>
+
+<p>
+A integral acima é então aproximada por meio da interpolação de \( f(x,y) \), o que permite estimar a variação da solução em vez de reconstruir sua forma global.
+</p>
+
+<h3>Interpretação conceitual</h3>
+
+<p>
+A diferença entre as duas abordagens pode ser interpretada da seguinte forma:
+</p>
+
+<ul>
+    <li><strong>Interpolar \(y(x)\):</strong> tenta reconstruir a curva da solução a partir de pontos já aproximados.</li>
+    <li><strong>Interpolar \(y'(x)\):</strong> reconstrói a regra de evolução da solução a partir da equação diferencial.</li>
+</ul>
+
+<p>
+Essa segunda abordagem é mais robusta porque utiliza diretamente a estrutura do problema original (a equação diferencial), em vez de depender apenas de uma sequência de pontos aproximados.
+</p>
+
+<p>
+Em outras palavras, em vez de reconstruir a trajetória da solução, os métodos baseados em \( y'(x) \) procuram aproximar o mecanismo que gera essa trajetória.
+</p>
+
+        </section>
+    </main>
+</body>
+</html>
