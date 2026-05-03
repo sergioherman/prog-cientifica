@@ -1,0 +1,17 @@
+footer {
+    background-color: black;
+    color: #fff;
+    line-height: 1rem;
+}
+.footer-container {
+    padding: 1rem 0 0.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+footer .footer-container p:last-child{
+    margin-bottom: 0rem;
+}
+footer p {
+    font-size: 0.75rem;
+}

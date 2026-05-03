@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/styles.js"></script>  <!-- CARREGA ESTILOS PADRÃO -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <!-- MATHJAX PARA LATEX -->
+    <link rel="stylesheet" href="../css/euler.css"> <!-- ESTILOS ESPECÍFICOS PARA ESTA PÁGINA -->
+</head>
+<body>
+    <script src="../js/header.js"></script>  <!-- CARREGA HEADER -->
+    <script src="../js/sidebar.js"></script>  <!-- CARREGA SIDEBAR -->
+    <script src="../js/media-controller.js"></script>  <!-- COMPORTAMENTO DA SIDEBAR -->
+    <script src="../js/footer.js"></script>  <!-- INSERE FOOTER -->
+    <main class="layout">
+        <section class="content">
+
+
+<div class="rev-ribbon">EM REVISÃO</div>
+
+<!-- INÍCIO DO CONTEÚDO -->
+
+<h2>Método de Euler Explícito</h2>
+
+<p>O método de Euler explícito é o mais simples dos métodos numéricos. Ele calcula o próximo valor da função usando a inclinação no ponto atual. A fórmula para o método de Euler explícito é dada por:</p>
+
+<div class="math-container">
+    <div class="math-formula-highlight">
+        \[y_{n+1} = y_n + h \cdot f'(x_n, y_n)\]
+    </div>
+</div>
+
+<p>Onde:</p>
+
+<ul>
+    <li><strong>\(h\)</strong>: é o tamanho do passo, que determina a distância entre os pontos de avaliação.</li>
+    <li><strong>\(f'(x_n, y_n)\)</strong>: é a função que representa a derivada da função que estamos tentando aproximar, avaliada no ponto atual \((x_n, y_n)\).</li>
+</ul>
+
+<p>O método de Euler explícito é fácil de implementar e computacionalmente eficiente, mas pode ser instável para certos tipos de equações diferenciais.</p>
+
+<hr>
+
+<h4>Primeiro Exemplo Prático: Método de Euler Explícito</h4>
+
+<p>
+    Considere o seguinte problema de valor inicial:
+</p>
+
+<div class="math-container">
+\[
+\begin{cases}
+y' = 2x - 4 \\
+y(1) = 3
+\end{cases}
+\]
+</div>
+
+<p>
+    Nosso objetivo é utilizar o método de Euler explícito para aproximar o valor de \(y\) no ponto \(x = 2\).
+</p>
+
+<p>
+    Uma forma natural de fazer isso seria avançar em pequenos passos a partir de \(x = 1\) até \(x = 2\).
+    No entanto, para entender melhor o funcionamento do método, começaremos com um único passo grande,
+    adotando \(h = 1\).
+</p>
+
+<h5>Passo Grande</h5>
+
+<div class="split-section">
+    <div class="split-section-text">
+        <p>
+        Partindo do ponto inicial \((1, 3)\), o método de Euler utiliza a inclinação da função nesse ponto
+        para construir uma reta tangente, que será usada para estimar o próximo valor.
+        </p>
+
+        <ul>
+            <li>Coeficiente angular: \(m = y'(1, 3) \space \)\(= 2(1) - 4 = -2\)</li>
+            <li>Coeficiente linear: \(b = y - mx \space \)\(= 3 - (-2)(1) = 5\)</li>
+            <li>Reta tangente: \(y = -2x + 5\)</li>
+        </ul>
+
+        <p>
+        Agora, usamos essa reta para estimar o valor de \(y\) em \(x = 2\):
+        </p>
+
+        <div class="math-container">
+            \[
+            y(2) \approx -2(2) + 5 = 1
+            \]
+        </div>
+
+        <p>
+        Portanto, utilizando um único passo de tamanho \(h = 1\), obtemos a aproximação
+        \(y(2) \approx 1\).
+        </p>
+
+    </div>
+
+    <div class="split-section-media">
+        <div class="video-wrapper">
+            <video class="video-small" muted preload="metadata">
+                <source src="../assets/videos/euler-explicito-passo-grande.mp4" type="video/mp4">
+            </video>
+
+            <button class="play-button" onclick="toggleVideo()">▶</button>
+        </div>
+    </div>
+
+</div>
+
+<p>
+Entretanto, essa aproximação pode apresentar um erro significativo. Isso ocorre porque o método
+de Euler explícito assume que a inclinação permanece constante ao longo do intervalo, o que nem
+sempre reflete o comportamento real da solução, especialmente quando há curvatura.
+</p>
+
+<p>
+Para obter resultados mais precisos, é necessário utilizar passos menores, refinando a aproximação, o que será explorado a seguir.
+</p>
+
+
+<h5>Passos Pequenos</h5>
+<p>
+    Agora vamos diminuir o passo para verificar o que acontece com a precisão do método. Usando o método de Euler explícito com um passo \(h = 0.25\), podemos calcular os próximos valores de \(y\) em pontos subsequentes. A cada passo, usamos a fórmula para atualizar o valor de \(y\) com base na inclinação dada por \(f'(x_n, y_n)\).</p>
+<p>Vamos partir da condição inicial:</p>
+<ol>
+    <li>
+        <p>Para \(n=0\):</p>
+        <p>\(x_0 = 1\), \(y_0 = 3\)</p>
+        <p>\(f'(x_0, y_0) = 2(1) - 4 = -2\)</p>
+        <p>\(y_1 = y_0 + h \cdot f'(x_0, y_0) = 3 + 0.25 \cdot (-2) = 2.5\)</p>
+    </li>
+    <li>
+        <p>Para \(n=1\):</p>
+        <p>\(x_1 = 1.25\), \(y_1 = 2.5\)</p>
+        <p>\(f'(x_1, y_1) = 2(1.25) - 4 = -1.5\)</p>
+        <p>\(y_2 = y_1 + h \cdot f'(x_1, y_1) = 2.5 + 0.25 \cdot (-1.5) = 2.125\)</p>
+    </li>
+    <li>
+        <p>Para \(n=2\):</p>
+        <p>\(x_2 = 1.5\), \(y_2 = 2.125\)</p>
+        <p>\(f'(x_2, y_2) = 2(1.5) - 4 = -1\)</p>
+        <p>\(y_3 = y_2 + h \cdot f'(x_2, y_2) = 2.125 + 0.25 \cdot (-1) = 1.875\)</p>
+    </li>
+</ol>
+
+
+<p>Não é necessário conhecer a solução exata, pois o método de Euler é utilizado justamente para obter uma aproximação numérica. Ele permite estimar a solução de uma equação diferencial em pontos sucessivos, utilizando apenas a inclinação (derivada) no ponto atual.</p>
+<p> O applet abaixo apresenta a equação diferencial, o ponto inicial (que pode ser ajustado) e o tamanho do passo \(h\). Por padrão, é exibida a etapa final do processo, juntamente com a solução exata, permitindo uma comparação direta. </p>
+<p> A partir dessa comparação, é possível analisar o erro em cada ponto obtido numericamente pelo método de Euler explícito. Para uma melhor compreensão do procedimento, recomenda-se iniciar na Etapa 0 e avançar o controle deslizante gradualmente, observando a construção passo a passo de forma gráfica. </p>
+<p> Também é interessante testar diferentes valores para o passo \(h\) e observar seus efeitos na aproximação. Em geral, passos menores produzem resultados mais precisos, porém exigem um maior número de cálculos. </p>
+
+<div class="geogebra-background">
+    <div style="max-width: 600px; aspect-ratio: 942 / 750;">
+<iframe
+    scrolling="no"
+    allowfullscreen
+    title="Euler Passo a Passo"
+    src="https://www.geogebra.org/material/iframe/id/kmnwcpkz/width/942/height/750/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/true/sdz/false/ctl/false" width="942px" height="750px" style="border:0px;">
+
+</iframe>
+    </div>
+</div>
+
+<p class="note">
+<strong>Observação</strong> O comportamento do erro para este caso parece ser previsível de modo que a solução exata possa ser inferida através de algum método de regressão. No entanto, para equações diferenciais mais complexas, o erro pode se comportar de maneira mais errática, tornando difícil prever a solução exata apenas com base na aproximação numérica.    
+</p>
+
+<hr>
+
+<h4>Segundo Exemplo Prático: Método de Euler Explícito</h4>
+<p>
+    O objetivo agora é analisar o comportamento da solução em um ponto específico. Para isso, fixa-se \(x = 0{,}8\) e observa-se como a aproximação numérica se compara com a solução exata nesse ponto. Partindo da condição inicial \(y(0) = 1\), aplica-se o método de Euler explícito para estimar o valor de \(y\) em \(x = 0{,}8\). O gráfico abaixo apresenta a solução exata (em verde) e as aproximações obtidas pelo método de Euler explícito (em pontos cinza).
+</p>
+
+<p>
+    Inicialmente, utiliza-se um passo de \(0{,}05\), correspondente a 16 iterações. Em seguida, o passo é duplicado sucessivamente — passando para \(0{,}1\), \(0{,}2\), \(0{,}4\) — até atingir \(0{,}8\), que corresponde a uma única iteração. Essa abordagem permite analisar como a aproximação numérica se afasta da solução exata à medida que o tamanho do passo é aumentado.
+</p>
+
+<div class="geogebra-background">
+    <div style="max-width: 700px; aspect-ratio: 960 / 777;">
+        <iframe
+            scrolling="no"
+            allowfullscreen
+            title="Ordem Euler"
+            src="https://www.geogebra.org/material/iframe/id/eaxbvqhv/width/960/height/777/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/true/sdz/false/ctl/false">
+        </iframe>
+    </div>
+</div>
+
+
+<hr>
+
+<h3>Análise da Ordem de Convergência</h3>
+
+<p>
+    Para avaliar quantitativamente a qualidade das aproximações, considera-se o erro absoluto no ponto \(x = 0{,}8\), definido como a diferença entre o valor numérico obtido pelo método de Euler explícito e o valor da solução exata nesse mesmo ponto. Ao calcular esse erro para diferentes tamanhos de passo, torna-se possível investigar como ele varia em função de \(h\).
+</p>
+
+<p>
+    Observa-se que, à medida que o passo é reduzido, o erro também diminui. Mais especificamente, ao dividir o passo pela metade, o erro é aproximadamente reduzido na mesma proporção. Esse comportamento indica uma relação do tipo \(E(h) \propto h\), característica de métodos de primeira ordem.
+</p>
+
+<p>
+    Para tornar essa relação mais evidente, construiu-se um gráfico em escala log-log do erro em função do tamanho do passo. Nesse tipo de representação, uma relação de proporcionalidade do tipo \(E(h) \propto h^p\) se manifesta como uma reta, cujo coeficiente angular corresponde à ordem de convergência \(p\). No caso do método de Euler explícito, observa-se que os pontos se alinham aproximadamente ao longo de uma reta com inclinação próxima de 1, confirmando que o método possui ordem de convergência igual a 1.
+</p>
+
+<hr>
+
+<h3>Comentário Final</h3>
+
+<p>
+    É interessante notar que a aproximação numérica faz com que o gráfico tenha curvas mais abertas do que deveria. Isso ocorre porque o método de Euler explícito utiliza aproximações lineares a partir da inclinação no ponto atual, o que nem sempre representa bem o comportamento real da curva na vizinhança daquele ponto.
+</p>
+
+<p>
+    Para reduzir esse efeito, o <a href="metodo-euler-implicito.html">Método de Euler Implícito</a> é uma alternativa importante. Ele leva em consideração informações do ponto seguinte na aproximação, o que permite uma representação mais estável e, em muitos casos, mais fiel da curvatura da solução.
+</p>
+
+</body>
+</html>

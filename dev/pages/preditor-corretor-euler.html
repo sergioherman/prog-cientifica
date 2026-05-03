@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/styles.js"></script>  <!-- CARREGA ESTILOS PADRÃO -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <!-- MATHJAX PARA LATEX -->
+</head>
+<body>
+    <script src="../js/header.js"></script>  <!-- CARREGA HEADER -->
+    <script src="../js/sidebar.js"></script>  <!-- CARREGA SIDEBAR -->
+    <script src="../js/media-controller.js"></script>  <!-- COMPORTAMENTO DA SIDEBAR -->
+    <script src="../js/footer.js"></script>  <!-- INSERE FOOTER -->
+    <main class="layout">
+        <section class="content">
+
+<!-- <div class="dev-ribbon">EM DESENVOLVIMENTO</div> -->
+<div class="rev-ribbon">EM REVISÃO</div>
+
+<!-- INÍCIO DO CONTEÚDO -->
+
+<h2>Método Preditor-Corretor</h2>
+
+<p>
+O método preditor-corretor é uma estratégia para resolver equações diferenciais
+que combina duas ideias já conhecidas: um método explícito (para prever) e um método implícito (para corrigir).
+</p>
+
+<p>
+É importante destacar que o método preditor-corretor não é um método específico,
+mas sim uma classe de métodos que pode ser construída a partir de diferentes escolhas de preditores e corretores.
+</p>
+
+<p>
+Esse tipo de abordagem ganha maior relevância quando combinado com métodos de passo múltiplo,
+como os métodos de <a href="adams-bashforth.html">Adams-Bashforth</a> (preditor) e <a href="adams-moulton.html">Adams-Moulton</a> (corretor).
+Neste material, no entanto, utilizamos métodos mais simples para facilitar a visualização do processo
+de predição e correção, permitindo que o aluno se familiarize com a ideia antes de avançar para métodos mais gerais.
+</p>
+
+<h3>Ideia do método</h3>
+
+<p>
+O método é composto por duas etapas principais:
+</p>
+
+<ol>
+    <li>
+        <b>Predição:</b> calcula-se uma estimativa inicial do próximo ponto utilizando um método explícito
+        (neste material, o <a href="metodo-euler-explicito.html">método de Euler explícito</a>).
+    </li>
+    <li>
+        <b>Correção:</b> essa estimativa é refinada com base na fórmula de um método implícito
+        (neste material, o <a href="euler-implicito-analitico.html">método de Euler implícito</a>).
+    </li>
+</ol>
+
+<p>
+Diferente do método implícito resolvido diretamente, não buscamos aqui a solução exata da equação implícita.
+Em vez disso, utilizamos o valor previsto como aproximação inicial para o processo de correção.
+</p>
+
+<h3>Iteração no corretor</h3>
+
+<p>
+Após a primeira correção, o processo pode ser repetido utilizando o valor corrigido como nova aproximação.
+Isso gera uma sequência de valores que converge para a solução do método implícito.
+</p>
+
+<p>
+Essa iteração difere daquela utilizada em 
+<a href="euler-implicito-iterativo.html">métodos iterativos para o Euler implícito</a>,
+nos quais técnicas como o método de Newton são empregadas para resolver uma equação não linear.
+</p>
+
+<p>
+No método preditor-corretor, a iteração tem papel de refinamento sucessivo da aproximação,
+e não de resolução direta da equação implícita.
+</p>
+
+<h3>Visualização</h3>
+
+<p>
+O applet abaixo ilustra o funcionamento do método preditor-corretor ao longo de dois passos.
+</p>
+
+<ul>
+    <li>A etapa de predição e as correções sucessivas</li>
+    <li>As iterações do corretor, formando uma trajetória de convergência</li>
+    <li>A comparação com os métodos de Euler explícito e implícito</li>
+    <li>Os diferentes tipos de erro ao longo do processo</li>
+</ul>
+
+<p>
+Utilize o controle deslizante de <b>Etapas</b> para acompanhar, passo a passo,
+a construção do método e a evolução das aproximações.
+</p>
+
+<div class="geogebra-background">
+    <div style="max-width: 700px; aspect-ratio: 1000 / 720;">
+        <iframe
+            scrolling="no"
+            title="Preditor Corretor Euler Expl Impl"
+            src="https://www.geogebra.org/material/iframe/id/tgzdt8gr/width/1000/height/720/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/true/sdz/false/ctl/false"
+        ></iframe>
+    </div>
+</div>
+
+<h3>Análise de erros</h3>
+
+<p>
+Nas etapas finais de cada passo (23–24 no primeiro passo e 46–47 no segundo), o applet permite visualizar diferentes tipos de erro
+como distâncias entre os pontos construídos e a solução exata.
+</p>
+
+<ul>
+    <li>
+        <b>Erro iterativo:</b> é a distância entre o último ponto obtido nas iterações do corretor
+        (na espiral de convergência) e o ponto do método de Euler implícito.
+        Ele representa o quanto ainda falta para que a iteração convirja completamente.
+    </li>
+
+    <li>
+        <b>Erro de discretização:</b> é a distância entre o ponto do método de Euler implícito
+        e a curva da solução exata.
+        Mesmo resolvendo exatamente o método implícito, ainda existe esse erro devido ao tamanho do passo.
+    </li>
+
+    <li>
+        <b>Erro global:</b> é a distância entre o ponto final obtido pelo método preditor-corretor
+        e a curva da solução exata.
+        Esse erro incorpora tanto o erro de discretização quanto o erro iterativo, sendo o erro total observado ao final do processo.
+    </li>
+</ul>
+
+<h3>Comparação entre métodos</h3>
+
+<p>
+Ao final do processo, comparamos o método preditor-corretor com:
+</p>
+
+<ul>
+    <li>Euler explícito (Etapa 49)</li>
+    <li>Euler implícito (Etapa 50)</li>
+</ul>
+
+<p>
+A comparação é feita por meio das razões entre os erros, permitindo avaliar o ganho (ou não)
+de precisão ao utilizar o corretor.
+</p>
+
+<p>
+Observa-se que, para passos maiores, o método preditor-corretor não garante necessariamente
+uma melhoria significativa em relação ao Euler Explícito.
+</p>
+
+<p>
+Em relação ao Euler Implícito, o método preditor-corretor apresenta erro maior,
+pois não resolve exatamente a equação implícita. Em contrapartida, evita a necessidade de
+resolver uma equação a cada passo, o que pode ser trabalhoso ou até inviável em problemas
+mais complexos (não lineares).
+</p>
+
+
+
+
+
+        </section>
+    </main>
+</body>
+</html>

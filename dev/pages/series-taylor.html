@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/styles.js"></script>  <!-- CARREGA ESTILOS PADRÃO -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <!-- MATHJAX PARA LATEX -->
+</head>
+<body>
+    <script src="../js/header.js"></script>  <!-- CARREGA HEADER -->
+    <script src="../js/sidebar.js"></script>  <!-- CARREGA SIDEBAR -->
+    <script src="../js/media-controller.js"></script>  <!-- COMPORTAMENTO DA SIDEBAR -->
+    <script src="../js/footer.js"></script>  <!-- INSERE FOOTER -->
+    <main class="layout">
+        <section class="content">
+
+<div class="rev-ribbon">EM REVISÃO</div>
+
+<!-- INÍCIO DO CONTEÚDO -->
+<h2>Revisão de Séries de Taylor</h2>
+
+<p>
+A Série de Taylor é uma ferramenta que nos permite construir aproximações de uma função em torno de um ponto específico \(x = a\).
+Essa aproximação é mais precisa quanto mais próximo estivermos desse ponto escolhido.
+</p>
+
+<p>
+Por exemplo, podemos aproximar a função:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[
+f(x) = e^x \quad \text{em torno de } x = 0
+\]
+</div>
+</div>
+
+<p>
+Para isso, utilizamos a seguinte expressão geral da Série de Taylor:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+    \[f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 \]
+    
+    \[ + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n\]
+</div>
+</div>
+
+<p>
+Cada termo dessa soma utiliza derivadas da função no ponto \(a\), permitindo construir uma aproximação polinomial cada vez mais precisa conforme aumentamos o número de termos.
+</p>
+
+<p>
+Essa ideia é útil porque nos permite estimar o valor de \(f(x)\) quando \(x\) está próximo de um ponto conhecido \(a\).
+No nosso exemplo, estamos considerando \(a = 0\). Portanto, vamos calcular os termos da série nesse ponto.
+</p>
+
+<div class="math-container">
+\[
+f(a) = f(0) = e^0 = 1
+\]
+</div>
+
+<p>
+A primeira derivada da função é:
+</p>
+<div class="math-container">
+\[
+f'(x) = e^x \quad \Rightarrow \quad f'(0) = e^0 = 1
+\]
+</div>
+
+<p>
+Além disso:
+</p>
+
+<div class="math-container">
+    \[
+    (x - a) = (x - 0) = x
+    \]
+</div>
+
+<p>
+Logo, o termo de primeira ordem é:
+</p>
+
+<div class="math-container">
+\[
+f'(a)(x - a) = 1 \cdot x = x
+\]
+</div>
+
+<p>
+A segunda derivada também é:
+</p>
+<div class="math-container">
+\[
+f''(x) = e^x \quad \Rightarrow \quad f''(0) = e^0 = 1
+\]
+</div>
+
+<p>
+O termo de segunda ordem fica:
+</p>
+<div class="math-container">
+\[
+\frac{f''(a)}{2!}(x - a)^2 = \frac{1}{2} x^2
+\]
+</div>
+
+
+<p>
+Portanto, somando os primeiros termos da série, obtemos a seguinte aproximação:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[
+f(x) \approx 1 + x + \frac{x^2}{2} \quad \text{quando } x \approx 0
+\]
+</div>
+</div>
+
+<p>
+Quanto mais termos incluirmos, mais precisa será essa aproximação, e maior será a ordem da Série de Taylor.
+</p>
+
+<p>
+    O Applet do Geogebra abaixo ilustra a aproximação de \(f(x) = e^x\) por meio de suas Séries de Taylor de diferentes ordens, mostrando como a curva da função se aproxima cada vez mais da função original à medida que aumentamos a ordem.
+    Também é possível verificar o erro de aproximação para um passo configurável, que é a diferença entre o valor real da função e o valor aproximado pela série, evidenciando como esse erro diminui à medida que mais termos são incluídos na aproximação.
+</p>
+
+<div class="geogebra-background">
+    <div style="max-width: 800px; aspect-ratio: 745 / 479;">
+        <iframe 
+            scrolling="no"
+            allowfullscreen
+            title="Expansão de Taylor"
+            src="https://www.geogebra.org/material/iframe/id/gv5vnzdw/width/1160/height/746/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/true/sdz/true/ctl/false">
+        </iframe>
+    </div>
+</div>
+
+        </section>
+    </main>
+</body>
+</html>

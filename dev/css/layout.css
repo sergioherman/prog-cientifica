@@ -1,0 +1,63 @@
+.layout {
+    display: flex;
+    line-height: 1.5;
+    color: #222;
+}
+.sidebar {
+    width: clamp(200px, 20vw, 300px);
+    flex-shrink: 0;
+    align-self: stretch;
+    position: relative;
+    padding: 0 0.4rem 0 1rem;
+}
+.sidebar, .content{
+    box-shadow: inset -5px 0 10px rgba(0,0,0,0.15);
+    background: linear-gradient(180deg, #f4f4f4, #dedede 75%, #b7b7b7 100%);
+}
+.sidebar .parent-active {
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(33, 56, 66, 0.25)
+    );
+    padding: 0.2rem 0;
+    border-radius: 12px;
+}
+/* .sidebar .active { */
+    /* border-bottom: solid 2px rgba(32, 55, 64, 0.5); */
+/* } */
+.sidebar-underline {
+  border: none;
+  height: 2px;
+  margin: -0.1rem 0 0.4rem 0;
+  background: linear-gradient(
+    to right,
+    rgba(33, 56, 66, 0.7),
+    transparent
+  );
+  border-radius: 2px;
+}
+
+.side-content {
+    position: sticky;
+    top: 0;
+    padding: 2rem 0 1rem 0;
+    color: #222222bb;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+    min-width: 0;
+}
+
+/* ===== MANTER FOOTER WM BAIXO ===== */
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+}

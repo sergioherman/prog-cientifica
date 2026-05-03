@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/styles.js"></script>  <!-- CARREGA ESTILOS PADRÃO -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <!-- MATHJAX PARA LATEX -->
+</head>
+<body>
+    <script src="../js/header.js"></script>  <!-- CARREGA HEADER -->
+    <script src="../js/sidebar.js"></script>  <!-- CARREGA SIDEBAR -->
+    <script src="../js/media-controller.js"></script>  <!-- COMPORTAMENTO DA SIDEBAR -->
+    <script src="../js/footer.js"></script>  <!-- INSERE FOOTER -->
+    <main class="layout">
+        <section class="content">
+
+<!-- <div class="dev-ribbon">EM DESENVOLVIMENTO</div> -->
+<div class="rev-ribbon">EM REVISÃO</div>
+
+<!-- INÍCIO DO CONTEÚDO -->
+
+<h2>PVI e Métodos Numéricos</h2>
+
+<p>
+Em muitos problemas envolvendo equações diferenciais, nosso objetivo é determinar o comportamento de uma função a partir de uma taxa de variação conhecida e de uma condição inicial. Esses problemas são chamados de Problemas de Valor Inicial (PVI) e aparecem com frequência em áreas como física, engenharia e computação científica.
+</p>
+
+<p>
+Um Problema de Valor Inicial (PVI) consiste em uma equação diferencial acompanhada de uma condição inicial, por exemplo:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[ y' = f(x, y),\]\[\quad y(x_0) = y_0 \]
+</div>
+</div>
+
+<p>
+Embora existam casos em que é possível obter uma solução analítica exata, isso nem sempre acontece. Na prática, diversas equações diferenciais não admitem solução fechada ou possuem soluções difíceis de manipular. É nesse contexto que os métodos numéricos se tornam essenciais, permitindo aproximar a solução de forma eficiente.
+</p>
+
+<p>
+Antes de explorarmos essas técnicas de aproximação, é importante revisitar a abordagem clássica baseada na solução analítica. Essa revisão ajudará a entender melhor as limitações desse método e motivará o uso de estratégias numéricas.
+</p>
+
+<h3>Fundamentos da Abordagem Analítica para Solução de PVI</h3>
+
+<p>
+Resolver um PVI consiste em determinar uma função \( y(x) \) que satisfaça simultaneamente a equação diferencial e a condição inicial especificada.
+</p>
+
+<p>
+Seja \( x_0 \) o ponto onde a condição inicial é conhecida e \( h \) um incremento. 
+Caso a solução analítica da equação diferencial seja conhecida, podemos calcular o valor da solução em um novo ponto 
+\( x_1 = x_0 + h \) utilizando a relação:
+</p>
+
+<div class="math-container">
+<div class="math-formula-highlight">
+\[
+y(x_1) = y(x_0) + \int_{x_0}^{x_1} y'(x)\,dx
+\]
+</div>
+</div>
+
+<p>
+Essa expressão é uma consequência direta do Teorema Fundamental do Cálculo e mostra que o valor da função em um novo ponto pode ser obtido a partir da área sob a curva da derivada.
+</p>
+
+<h3>Exemplo de Interpretação Geometrica da Solução Analítica de um PVI</h3>
+
+<p>
+Considere o seguinte Problema de Valor Inicial (PVI):
+</p>
+
+<div class="math-container">
+\[
+\begin{cases}
+y' = y - x^2 - 1 \\
+y(0) = 2
+\end{cases}
+\]
+</div>
+
+<p>
+Utilize o applet abaixo para navegar entre as etapas e explorar duas formas para calcular \( y(x_1) \).
+É possível variar o valor do passo \( h \) e também modificar a condição inicial do problema.
+Observe como o valor de \( y(x_1) \) está diretamente relacionado à área sob a curva da derivada no intervalo considerado (lembre-se que para valores negativos de \( y \), a área é considerada negativa).
+</p>
+
+<p>
+Ao navegar pelas etapas, procure interpretar geometricamente o processo: a integral representa a acumulação das variações de \( y \), permitindo obter o valor da solução no ponto seguinte.
+</p>
+<div class="geogebra-background">
+    <div style="max-width: 700px; aspect-ratio: 1000 / 670;">
+        <iframe
+            scrolling="no"
+            title="Analitico"
+            src="https://www.geogebra.org/material/iframe/id/v74mr4mz/width/1000/height/670/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/false/sdz/false/ctl/false"
+            width="1000px" height="670px" style="border:0px;">
+        </iframe>
+    </div>
+</div>
+
+<p>
+No exemplo apresentado, é possível determinar explicitamente a solução \( y(x) \), o que permite calcular valores exatos da função em qualquer ponto do intervalo.
+No entanto, essa é uma situação particular. Em muitos problemas reais, <strong>não é possível obter uma solução analítica para a equação diferencial</strong>.
+</p>
+
+<p>
+É justamente nesse contexto que surgem os <strong>métodos numéricos</strong>. Em vez de calcular a integral de forma exata, esses métodos constroem <strong>aproximações</strong> para o valor da solução, utilizando informações locais da derivada ao longo do intervalo.
+</p>
+
+<h3>Classificação dos Problemas de Valor Inicial (PVI)</h3>
+    
+<p>
+Para compreender melhor a natureza dos problemas que desejamos resolver, é importante caracterizar os PVIs segundo algumas propriedades da equação diferencial envolvida.
+Essas características influenciam diretamente o comportamento da solução e, consequentemente, a escolha dos métodos numéricos mais adequados.
+</p>
+
+<p>
+Os PVIs podem ser classificados de diferentes formas:
+</p>
+
+<ul>
+    <li><strong>Ordem da equação:</strong> corresponde à maior ordem de derivada presente na equação diferencial, podendo ser de primeira ordem, segunda ordem ou superior.</li>
+    
+    <li><strong>Dimensão:</strong> indica o número de funções desconhecidas no problema, podendo ser escalar (uma única função \( y(x) \)) ou um sistema de equações diferenciais acopladas.</li>
+
+    <li><strong>Linearidade:</strong> refere-se à forma da equação diferencial, que pode ser linear (quando a função desconhecida e suas derivadas aparecem de forma linear) ou não linear.</li>
+
+    <li><strong>Rigidez:</strong> relacionada ao comportamento da solução em processos numéricos, especialmente quando há diferentes escalas de variação. Problemas com esse comportamento podem impor restrições severas ao tamanho do passo em métodos explícitos, exigindo o uso de métodos mais estáveis.</li>
+</ul>
+
+<p>
+Essas classificações não são apenas descritivas: elas fornecem critérios importantes para a escolha do método numérico mais adequado. 
+De modo geral, problemas não rígidos podem ser resolvidos de forma eficiente por métodos explícitos, enquanto problemas rígidos tendem a exigir métodos implícitos, que apresentam maior estabilidade ao longo das iterações.
+</p>
+
+<h3>Classificação dos Métodos Numéricos</h3>
+
+<p>
+Uma vez caracterizado o problema, podemos analisar as diferentes estratégias utilizadas para aproximar sua solução. 
+Quando não é possível obter uma expressão exata para \( y(x) \), os métodos numéricos permitem calcular aproximações para os valores da função ao longo do intervalo de interesse.
+Neste material, adotaremos como principal critério de organização a distinção entre <strong>métodos de passo simples</strong> e <strong>métodos de passo múltiplo</strong>.
+</p>
+
+<ul>
+    <li><strong>Métodos de passo simples:</strong> constroem o valor de \( y(x_{n+1}) \) a partir das informações disponíveis no passo atual, utilizando a equação diferencial para estimar como a solução evolui ao longo do intervalo \( [x_n, x_{n+1}] \). 
+    Nesse processo, podem ser consideradas inclinações em diferentes pontos do intervalo, como no início, em pontos intermediários ou no final do passo. 
+    Exemplos incluem o método de Euler e os métodos de Runge-Kutta.</li>
+    
+    <li><strong>Métodos de passo múltiplo:</strong> constroem o valor de \( y(x_{n+1}) \) utilizando informações acumuladas de passos anteriores, combinando valores já conhecidos da solução e de suas derivadas. 
+    Com isso, em vez de estimar a evolução apenas no intervalo atual, o método utiliza o comportamento recente da solução para obter uma aproximação mais refinada. 
+    Exemplos incluem os métodos de Adams-Bashforth e Adams-Moulton.</li>
+</ul>
+
+<p>
+Essa classificação está diretamente relacionada à forma como a informação é utilizada ao longo do processo iterativo e será a base para a organização dos métodos estudados.
+</p>
+
+<p>
+Além dessa divisão principal, os métodos numéricos também podem ser classificados segundo outros critérios importantes, como:
+</p>
+
+<ul>
+    <li>
+    <strong>Explícitos vs implícitos:</strong> em métodos explícitos, o valor seguinte \( y_{n+1} \) é obtido diretamente a partir de valores já conhecidos (como \( x_n \) e \( y_n \)), sem a necessidade de resolver equações adicionais. 
+    Já nos métodos implícitos, o valor \( y_{n+1} \) aparece em ambos os lados da expressão, geralmente dentro da função \( f \), de modo que sua determinação exige a resolução de uma equação (frequentemente não linear) a cada passo.
+    </li>
+    
+    <li>
+    <strong>Ordem do método:</strong> indica a taxa com que o erro da aproximação diminui à medida que o tamanho do passo \( h \) é reduzido. 
+    Um método de ordem \( p \) possui erro global proporcional a \( h^p \), o que significa que, ao reduzir o passo, a aproximação se torna mais precisa de forma previsível. 
+    Assim, métodos de ordem mais alta tendem a produzir melhores resultados com menos passos, embora possam exigir maior custo computacional por iteração.
+    </li>
+    
+    <li>
+    <strong>Estabilidade:</strong> refere-se ao comportamento do erro ao longo das iterações, indicando se pequenas perturbações (provenientes de erros de arredondamento ou da própria aproximação) permanecem controladas ou são amplificadas durante o processo. 
+    Nesse contexto, um método pode ser <em>condicionalmente estável</em>, quando a estabilidade depende da escolha adequada do tamanho do passo \( h \), ou <em>incondicionalmente estável</em>, quando mantém o comportamento estável independentemente desse parâmetro. 
+    Essa característica é particularmente importante em problemas rígidos, nos quais métodos inadequados podem levar a instabilidades mesmo com passos pequenos.
+    </li>
+
+    <li>
+    <strong>Formulação:</strong> refere-se à ideia fundamental utilizada na construção do método. 
+    Alguns métodos baseiam-se na avaliação de inclinações ao longo do passo (como os métodos de Runge–Kutta), enquanto outros utilizam aproximações da integral da equação diferencial por meio de interpolação de valores anteriores (como os métodos de Adams). 
+    Há ainda abordagens que partem de aproximações diretas das derivadas por diferenças finitas.
+    </li>
+</ul>
+
+<p>
+Dessa forma, cada método pode ser descrito por uma combinação dessas características. Por exemplo, o método de Euler é um método de passo simples, explícito e de primeira ordem, enquanto métodos de Adams podem ser de passo múltiplo e explícitos ou implícitos.
+</p>
+
+<p>
+Enquanto o applet ilustra o cálculo exato baseado na solução analítica, os métodos numéricos permitem resolver o mesmo tipo de problema <strong>mesmo quando essa solução não é conhecida</strong>.
+</p>
+
+<hr>
+
+
+
+<p style="text-align: center;">
+<strong>O PVI define o problema. O método numérico define como resolvê-lo.</strong>
+</p>
+
+
+
+        </section>
+    </main>
+</body>
+</html>
+
+

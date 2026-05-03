@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <script src="../js/styles.js"></script>  <!-- CARREGA ESTILOS PADRÃO -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  <!-- MATHJAX PARA LATEX -->
+</head>
+<body>
+    <script src="../js/header.js"></script>  <!-- CARREGA HEADER -->
+    <script src="../js/sidebar.js"></script>  <!-- CARREGA SIDEBAR -->
+    <script src="../js/media-controller.js"></script>  <!-- COMPORTAMENTO DA SIDEBAR -->
+    <script src="../js/footer.js"></script>  <!-- INSERE FOOTER -->
+    <main class="layout">
+        <section class="content">
+
+<!-- <div class="dev-ribbon">EM DESENVOLVIMENTO</div> -->
+<div class="rev-ribbon">EM REVISÃO</div>
+
+<!-- INÍCIO DO CONTEÚDO -->
+ <h2>Método de Runge-Kutta de Quarta Ordem Explícito</h2>
+ <p>
+    O método de Runge-Kutta de quarta ordem (RK4) é um método numérico mais preciso para resolver equações diferenciais ordinárias (EDOs) de valor inicial.
+    Ele é baseado na ideia de calcular várias inclinações intermediárias para obter uma estimativa mais precisa do valor da função no próximo ponto.
+ </p>
+ <p>
+    O applet abaixo ilustra o método de Runge-Kutta de quarta ordem para resolver a equação diferencial \( \frac{dy}{dx} = f(x, y) \) com um passo de tempo \( h \).
+    O método RK4 calcula quatro inclinações intermediárias, \( k_1 \), \( k_2 \), \( k_3 \) e \( k_4 \), usando as seguintes fórmulas:
+ </p>
+
+<div class="math-container">
+    <div class="math-formula-highlight">
+\[
+\begin{cases}
+k_1 = f(x_n, y_n) \\
+k_2 = f\left(x_n + \frac{h}{2}, y_n + \frac{h \cdot k_1}{2}\right) \\
+k_3 = f\left(x_n + \frac{h}{2}, y_n + \frac{h \cdot k_2}{2}\right) \\
+k_4 = f(x_n + h, y_n + h \cdot k_3)
+\end{cases}
+\]
+    </div>
+</div>
+
+<p>
+    Essas inclinações são então combinadas para calcular o próximo valor da solução:
+</p>
+
+<div class="math-container">
+    <div class="math-formula-highlight">
+\[
+y_{n+1} = y_n + \frac{h}{6}(k_1 + 2k_2 + 2k_3 + k_4)
+\]
+    </div>
+</div>
+
+<p>
+    Para ilustrar o funcionamento do método, considere a equação diferencial \( \frac{dy}{dx} = y \), com condição inicial \( y(1) = 1 \) e passo \( h = 1 \). O applet a seguir apresenta uma interpretação geométrica do método, destacando as inclinações intermediárias e sua contribuição para a estimativa final.
+</p>
+
+<p>
+    No applet, essas inclinações são combinadas em uma única quantidade efetiva \(k\), de modo que o avanço pode ser escrito como \( y_{n+1} = y_n + h \cdot k \), onde \(k\) representa uma média ponderada das inclinações calculadas.
+</p>
+
+ <div class="geogebra-background">
+    <div style="max-width: 700px; aspect-ratio: 920 / 700;">
+        <iframe
+            scrolling="no"
+            allowfullscreen
+            title="RK4 1 Passo"
+            src="https://www.geogebra.org/material/iframe/id/pdnuwpzm/width/920/height/700/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/true/rc/false/ld/true/sdz/false/ctl/false">
+        </iframe>
+    </div>
+</div>
+
+<p>
+    O applet ilustra apenas um único passo do método para fins didáticos. Na prática, o método de Runge-Kutta de quarta ordem é aplicado de forma iterativa ao longo do intervalo de interesse, utilizando o valor de \(y_{n+1}\) como condição inicial para o passo seguinte.
+</p>
+
+<p>
+    Em cada passo, são calculadas quatro inclinações intermediárias associadas ao ponto atual. Ao considerar múltiplos passos, é comum explicitar essa dependência adicionando um índice ao passo, escrevendo \(k_{1,n}\), \(k_{2,n}\), \(k_{3,n}\) e \(k_{4,n}\). Esse índice indica que as inclinações são recalculadas a cada iteração, embora o procedimento permaneça exatamente o mesmo em todos os passos.
+</p>
+
+<p>
+    Em termos práticos, o método de Runge-Kutta de quarta ordem se destaca principalmente pela sua alta precisão, sem a necessidade de calcular derivadas de ordem superior, como ocorre nos métodos de Taylor. Em comparação com métodos preditor-corretor, o RK4 não exige o armazenamento de valores de passos anteriores, o que simplifica sua implementação. Por outro lado, métodos preditor-corretor podem ser mais eficientes em termos de custo computacional por passo quando bem implementados. Assim, o RK4 é frequentemente escolhido por oferecer um bom equilíbrio entre precisão, simplicidade e robustez.
+</p>
+        </section>
+    </main>
+</body>
+</html>
+
+
+
