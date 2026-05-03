@@ -16,13 +16,13 @@ jobs:
 
       - name: Preparar arquivos
         run: |
-          mkdir public
+          mkdir -p public
 
           if [ "${GITHUB_REF##*/}" = "main" ]; then
-            cp -r ./* public/
+            rsync -av --exclude='.git' --exclude='.github' ./ public/
           else
             mkdir -p public/dev
-            cp -r ./* public/dev/
+            rsync -av --exclude='.git' --exclude='.github' ./ public/dev/
           fi
 
       - name: Publicar no GitHub Pages
