@@ -1,0 +1,33 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Preparar arquivos
+        run: |
+          mkdir public
+
+          if [ "${GITHUB_REF##*/}" = "main" ]; then
+            cp -r ./* public/
+          else
+            mkdir -p public/dev
+            cp -r ./* public/dev/
+          fi
+
+      - name: Publicar no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          keep_files: true
