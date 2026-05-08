@@ -94,7 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
 -->
                         </ul>
                     </li>
-                    <a href="${pagePath}pvc-metodos-numericos.html">PVC: Métodos Numéricos<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
+                    <li>
+                        <a href="${pagePath}pvc-metodos-numericos.html">PVC: Métodos Numéricos<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
                         <ul>
                         <li><a href="${pagePath}dif-finita.html">Método das Diferenças Finitas<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
                         </ul>
