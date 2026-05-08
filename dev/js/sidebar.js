@@ -94,12 +94,12 @@ document.addEventListener('DOMContentLoaded', function() {
 -->
                         </ul>
                     </li>
-<!--
-                    <li>Métodos Numéricos para Resolução de EDOs: Problemas de Valor de Contorno
+                    <a href="${pagePath}pvc-metodos-numericos.html">PVC: Métodos Numéricos<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
                         <ul>
-                        <li>Método das Diferenças Finitas</li>
+                        <li><a href="${pagePath}dif-finita.html">Método das Diferenças Finitas<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
                         </ul>
                     </li>
+<!--
 
                     <li>Métodos Numéricos para Resolução de Equações Diferenciais Parciais (EDPs)
                         <ul>
