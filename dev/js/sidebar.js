@@ -28,28 +28,32 @@ document.addEventListener('DOMContentLoaded', function() {
                             <a href="${pagePath}metodo-passo-simples.html">Métodos de Passo Simples<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
                             <ul>
                             <li>
-                                <a href="${pagePath}metodo-euler.html">Método de Euler<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
+                                <a href="${pagePath}metodo-euler.html">Euler<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
                                 <ul>
                                 <li><a href="${pagePath}metodo-euler-explicito.html">Método de Euler Explícito<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
-                                <li>
-                                    <a href="${pagePath}metodo-euler-implicito.html" >Método de Euler Implícito<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
-                                    <ul>
-                                        <li><a href="${pagePath}euler-implicito-analitico.html">Solução Analítica (caso linear)<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
-                                        <li><a href="${pagePath}euler-implicito-iterativo.html">Métodos Iterativos<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
-                                    </ul>
-                                <li><a href="${pagePath}preditor-corretor-euler.html">Preditor-Corretor com Euler<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
+                                    <li>
+                                        <a href="${pagePath}metodo-euler-implicito.html" >Método de Euler Implícito<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+                                        <ul>
+                                            <li><a href="${pagePath}euler-implicito-analitico.html">Solução Analítica (caso linear)<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+                                            <li><a href="${pagePath}euler-implicito-iterativo.html">Métodos Iterativos<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+                                        </ul>
+                                    <li><a href="${pagePath}preditor-corretor-euler.html">Preditor-Corretor com Euler<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
+                                    <li><a href="${pagePath}euler-problema-segunda-ordem.html">Problema de 2º Ordem - Euler<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+
                                 </li>
                                 </ul>
                             </li>
-                            <li><a href="${pagePath}metodos-taylor.html">Métodos de Taylor<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+                            <li><a href="${pagePath}metodos-taylor.html">Taylor<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
                             <li>
-                                <a href="${pagePath}metodos-runge-kutta.html">Métodos de Runge-Kutta<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
+                                <a href="${pagePath}metodos-runge-kutta.html">Runge-Kutta<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
                                 <ul>
                                 <li><a href="${pagePath}metodo-rk2-ex.html">RK Segunda Ordem Explícito<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
 <!--
                                 <li><a href="${pagePath}metodo-rk3.html">RK Terceira Ordem<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
 -->                                
                                 <li><a href="${pagePath}metodo-rk4-ex.html">RK Quarta Ordem Explícito<span style="color: rgba(173, 161, 0, 1);"> (R)</span></a></li>
+                                <li><a href="${pagePath}rk-problema-segunda-ordem.html">Problema de 2º Ordem - RK<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
+
                                 </ul>
                             </li>
 
@@ -69,18 +73,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li>Métodos Explícitos
                                 <ul>
                                 <li><a href="${pagePath}adams-bashforth.html">Adams-Bashforth<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
-<!--
-                                <li>Nyström</li>
--->
                                 </ul>
                             </li>
                             <li>Métodos Implícitos
                                 <ul>
                                 <li><a href="${pagePath}adams-moulton.html">Adams-Moulton<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
-<!--
-                                <li>Milne-Simpson</li>
-                                <li>BDF (Backward Differentiation Formula)</li>
--->
                                 </ul>
                             </li>
                             <li><a href="${pagePath}preditor-corretor-adams-bashforth-moulton.html">Preditor-Corretor com Adams-Bashforth e Adams-Moulton<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
@@ -94,12 +91,70 @@ document.addEventListener('DOMContentLoaded', function() {
 -->
                         </ul>
                     </li>
-                    <li>
-                        <a href="${pagePath}pvc-metodos-numericos.html">PVC: Métodos Numéricos<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a>
-                        <ul>
-                        <li><a href="${pagePath}dif-finita.html">Método das Diferenças Finitas<span style="color: rgba(100, 0, 0, 1);"> (D)</span></a></li>
-                        </ul>
-                    </li>
+
+
+
+
+
+
+
+<li>
+    <a href="${pagePath}pvc-metodos-numericos.html">
+        PVC: Métodos Numéricos <span style="color: rgba(100, 0, 0, 1);">(D)</span>
+    </a>
+
+    <ul>
+        <li>
+            <a href="${pagePath}dif-finita.html">
+                Diferenças Finitas <span style="color: rgba(100, 0, 0, 1);">(D)</span>
+            </a>
+
+            <ul>
+                <li>
+                    <a href="${pagePath}df-2ordem-linear.html">
+                        Problemas de 2ª Ordem Linear <span style="color: rgba(100, 0, 0, 1);">(D)</span>
+                    </a>
+
+                    <ul>
+                        <li>
+                            <a href="${pagePath}df-2ordem-linear-2ordem.html">
+                                Método de Segunda Ordem <span style="color: rgba(100, 0, 0, 1);">(D)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${pagePath}df-2ordem-linear-4ordem.html">
+                                Método de Quarta Ordem <span style="color: rgba(100, 0, 0, 1);">(D)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="${pagePath}df-2ordem-osc.html">
+                        Problemas de 2ª Ordem Oscilatório <span style="color: rgba(100, 0, 0, 1);">(D)</span>
+                    </a>
+
+                    <ul>
+                        <li>
+                            <a href="${pagePath}df-2ordem-osc-2ordem.html">
+                                Método de Segunda Ordem <span style="color: rgba(100, 0, 0, 1);">(D)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${pagePath}df-2ordem-osc-4ordem.html">
+                                Método de Quarta Ordem <span style="color: rgba(100, 0, 0, 1);">(D)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+</li>
+
+
+
 <!--
 
                     <li>Métodos Numéricos para Resolução de Equações Diferenciais Parciais (EDPs)
